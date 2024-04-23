@@ -130,6 +130,9 @@ input {
   color: #00474b;
   border: 2px solid transparent;
 }
+input::placeholder {
+  color: hsla(183, 100%, 15%, 0.35);
+}
 input:valid:hover {
   border: 2px solid #26c2ae;
 }
@@ -313,7 +316,7 @@ input:valid:hover {
   margin-top: 2rem;
   font-size: 20px;
   text-align: center;
-  background: #0D686D;
+  background: hsla(183, 79%, 24%, 0.35);
   color: #00474B;
   display: flex;
   justify-content: center;
@@ -344,6 +347,7 @@ input:valid:hover {
 }
 .calculator-input::placeholder {
   text-align: center;
+  color: #547878;
 }
 .calculator-input:not(:placeholder-shown) {
   padding-right: 20px;
