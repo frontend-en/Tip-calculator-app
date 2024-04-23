@@ -2,8 +2,8 @@
 
 ### Screenshot
 
-![](./images/Screenshot_2.jpg)
-![](./images/Screenshot_2-mob.jpg)
+![](./images/1.jpg)
+![](./images/2.jpg)
 
 
 ### Built with
@@ -18,36 +18,32 @@
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-
 ```js
 
 use closest
 
-cards.addEventListener('click', (e) => {
+parentContainer.addEventListener('click', (e) => {
 
   const buttonElem = e.target.closest('button')
+  const inputElem = e.target.closest('input')
 
-  if (buttonElem === null) {
-    e.stopPropagation()
-    return
+  if (inputElem) {
+
+    setInputElem(inputElem)
+
+    if(inputElem.id === 'custom') {
+      cleanButtonClass()
+    }
   }
 
   if (buttonElem) {
+    setButtonElem(buttonElem)
+    customInput.value = ''
+  }
 
-    removeChildren(cards)
-
-    daily.classList.remove('active')
-    weekly.classList.remove('active')
-    monthly.classList.remove('active')
-    buttonElem.classList.add('active')
-
-    const term = buttonElem.textContent.toLowerCase()
-
-    renderAll(render, term)
+  if (buttonElem === null || inputElem === null) {
+    e.stopPropagation()
+    return
   }
 })
 ```
