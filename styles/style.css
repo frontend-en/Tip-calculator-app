@@ -109,7 +109,6 @@ body {
   background-color: hsl(185, 41%, 84%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -143,6 +142,7 @@ input:valid:hover {
   .header__logo {
     padding-bottom: 5.4375rem;
     padding-top: 0;
+    margin-top: 10.1875rem;
   }
 }
 
@@ -313,8 +313,8 @@ input:valid:hover {
   margin-top: 2rem;
   font-size: 20px;
   text-align: center;
-  background: #26c2ae;
-  color: #00474b;
+  background: #0D686D;
+  color: #00474B;
   display: flex;
   justify-content: center;
   align-items: center;
