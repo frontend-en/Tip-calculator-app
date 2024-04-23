@@ -362,10 +362,10 @@ input:valid:hover {
   display: none;
 }
 
-.input-error {
-  border: 2px solid #e17052;
-}
-
 .input-valid {
   border: 2px solid #26c2ae;
+}
+
+.input-error {
+  border: 2px solid #e17052 !important;
 }/*# sourceMappingURL=style.css.map */

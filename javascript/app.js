@@ -5,22 +5,18 @@ const tipOut = document.getElementById('tip');
 const totalOut = document.getElementById('total');
 const resetButton = document.getElementById('reset');
 const calculatorButton = document.querySelectorAll('.calculator__button')
+const parentContainer = document.querySelector('.calculator__calc')
+const errorMessge = document.querySelector('.calculator__error')
+
 
 let ammountTip = {
   bill: '00.00',
   amount: '00.00',
   people: '1',
-  percent: '00.00',
+  custom: '00.00',
   total: '00.00',
   totalTipPerson: '00,00',
 }
-
-calculatorButton.forEach(item => {
-  if(item.textContent.trim() === '15%') {
-    item.classList.add('active-btn')
-  }
-})
-
 
 resetButton.addEventListener('click', () => {
   billInput.value = '';
@@ -32,38 +28,18 @@ resetButton.addEventListener('click', () => {
     bill: '00.00',
     amount: '00.00',
     people: '1',
-    percent: '0',
+    custom: '0',
     total: '$0.00',
     totalTipPerson: '$0.00',
   }
   console.log(ammountTip);
 })
 
-billInput.addEventListener('input', ({target}) => {
-  ammountTip.bill = Number(target.value);
-  setPersent();
-} )
-
-
-peopleInput.addEventListener('input', ({target}) => {
-  ammountTip.people = Number(target.value);
-  setPersent();
-
-} )
-
-customInput.addEventListener('input', ({target}) => {
-  ammountTip.percent = Math.abs(Number(target.value));
-  setPersent()
-})
-
-const setButtonPersent = ({target}) => {
-  ammountTip.percent = Number(target.textContent.trim().slice(0, -1));
-  setPersent()
+const cleanButtonClass = () => {
+  calculatorButton.forEach(item => {
+    item.classList.remove('active-btn')
+  })
 }
-
-calculatorButton.forEach(item => {
-  item.addEventListener('click', setButtonPersent)
-})
 
 const setAmount = () => {
   tipOut.innerHTML =`$${Number(ammountTip.totalTipPerson).toFixed(2)}`
@@ -71,8 +47,66 @@ const setAmount = () => {
 }
 
 const setPersent = () => {
-  const tipPer = (ammountTip.percent * ammountTip.bill /100) / ammountTip.people
+  const tipPer = (ammountTip.custom * ammountTip.bill /100) / ammountTip.people
   ammountTip.totalTipPerson = tipPer
   ammountTip.total = (tipPer + ammountTip.bill) / ammountTip.people
   setAmount()
 }
+
+const setInputElem = (inputElem) => {
+  if(!inputElem) return
+  inputElem.addEventListener('input', ({target}) => {
+
+    if(Number(target.value) <= 0) {
+      if(inputElem.id === 'people') {
+        inputElem.classList.add('input-error')
+        errorMessge.classList.remove('hidden')
+      }
+
+
+    } else {
+      ammountTip[inputElem.id] = Number(target.value);
+      if(inputElem.id === 'people') {
+        inputElem.classList.remove('input-error')
+        errorMessge.classList.add('hidden')
+      }
+
+      setPersent();
+    }
+
+
+  })
+}
+const setButtonElem = (buttonElem) => {
+
+  cleanButtonClass()
+
+    ammountTip.custom = Number(buttonElem.textContent.trim().slice(0, -1));
+    buttonElem.classList.add('active-btn')
+    setPersent()
+}
+
+parentContainer.addEventListener('click', (e) => {
+
+  const buttonElem = e.target.closest('button')
+  const inputElem = e.target.closest('input')
+
+  if (inputElem) {
+
+    setInputElem(inputElem)
+
+    if(inputElem.id === 'custom') {
+      cleanButtonClass()
+    }
+  }
+
+  if (buttonElem) {
+    setButtonElem(buttonElem)
+    customInput.value = ''
+  }
+
+  if (buttonElem === null || inputElem === null) {
+    e.stopPropagation()
+    return
+  }
+})
