@@ -1,0 +1,371 @@
+@font-face {
+  font-family: "SpaceMono";
+  src: local("SpaceMono-Bold"), url("../fonts/SpaceMono-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+/* https://piccalil.li/blog/a-modern-css-reset */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  letter-spacing: -0.05px;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  font-family: "SpaceMono", sans-serif;
+  color: hsl(180, 18%, 40%);
+}
+
+body {
+  background-color: hsl(185, 41%, 84%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lable {
+  font-weight: 700;
+  font-size: 16px;
+  color: #5e7a7d;
+}
+
+input {
+  border-radius: 5px;
+  background: #f3f9fa;
+  border: 0;
+  outline: none;
+  height: 3rem;
+  padding: 0 1.1rem;
+  font-size: 24px;
+  text-align: right;
+  color: #00474b;
+  border: 2px solid transparent;
+}
+input:valid:hover {
+  border: 2px solid #26c2ae;
+}
+
+.header__logo {
+  padding-top: 3.125rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .header__logo {
+    padding-bottom: 5.4375rem;
+    padding-top: 0;
+  }
+}
+
+.calculator {
+  background-color: white;
+  box-shadow: 0 32px 43px 0 rgba(79, 166, 175, 0.2);
+  border-radius: 25px 25px 0 0;
+  max-width: 375px;
+}
+@media (min-width: 1024px) {
+  .calculator {
+    max-width: 920px;
+    border-radius: 25px;
+  }
+}
+.calculator__content {
+  padding: 2rem;
+}
+@media (min-width: 1024px) {
+  .calculator__content {
+    display: flex;
+    padding: 2rem 2rem 2rem 3rem;
+  }
+}
+.calculator__calc {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .calculator__calc {
+    max-width: 379px;
+    margin-bottom: 0;
+    gap: 2.5rem;
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+}
+.calculator__bill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  position: relative;
+}
+.calculator__bill::before {
+  content: url("../images/icon-dollar.svg");
+  position: absolute;
+  top: 45px;
+  left: 18px;
+  fill: #9ebbbd;
+  width: 11px;
+  height: 11px;
+  z-index: 1;
+}
+.calculator__select-tip-lable {
+  margin-bottom: 1rem;
+}
+.calculator__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .calculator__buttons {
+    column-gap: 0.875rem;
+    row-gap: 1rem;
+  }
+}
+.calculator__button {
+  border-radius: 5px;
+  background: hsl(183, 100%, 15%);
+  color: white;
+  font-size: 24px;
+  padding: 0.375rem 0;
+  width: 9.1875rem;
+  text-align: center;
+  transition: all 300ms ease-in-out 0.1ms;
+}
+@media (min-width: 1024px) {
+  .calculator__button {
+    width: 7.3125rem;
+  }
+  .calculator__button:hover {
+    background: #9fe8df;
+  }
+}
+.calculator__people {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  position: relative;
+}
+.calculator__people::before {
+  content: url("../images/icon-person.svg");
+  position: absolute;
+  top: 43px;
+  left: 17px;
+  fill: #9ebbbd;
+  width: 11px;
+  height: 11px;
+  z-index: 1;
+}
+.calculator__error {
+  color: #E17457;
+  position: absolute;
+  transform: translateX(145%);
+}
+@media (min-width: 1024px) {
+  .calculator__error {
+    transform: translateX(200%);
+  }
+}
+.calculator__amount {
+  padding: 2.3125rem 1.5rem 1.5rem 1.5rem;
+}
+@media (min-width: 1024px) {
+  .calculator__amount {
+    margin-left: 3rem;
+    padding: 2.5rem;
+  }
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: hsl(183, 100%, 15%);
+}
+@media (min-width: 1024px) {
+  .amount {
+    width: 413px;
+  }
+}
+.amount__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.amount__row:first-child {
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .amount__row:first-child {
+    margin-bottom: 1.6rem;
+    margin-top: 1px;
+  }
+}
+.amount__tip {
+  font-size: 16px;
+  color: #fff;
+}
+.amount__person {
+  font-size: 13px;
+}
+.amount__cost {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  color: #26c2ae;
+}
+@media (min-width: 1024px) {
+  .amount__cost {
+    font-size: 3rem;
+  }
+}
+.amount__button {
+  margin-top: 2rem;
+  font-size: 20px;
+  text-align: center;
+  background: #26c2ae;
+  color: #00474b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0.5625rem 0;
+  border-radius: 5px;
+  transition: background 300ms ease-in-out 0.1ms;
+}
+@media (min-width: 1024px) {
+  .amount__button {
+    margin-top: auto;
+  }
+  .amount__button:hover {
+    background: #9fe8df;
+  }
+}
+
+.active-btn {
+  background-color: #26C2AE;
+  color: #00474b;
+}
+
+.calculator-input {
+  background: #f3f9fa;
+  color: #00474b;
+  text-align: right;
+}
+.calculator-input::placeholder {
+  text-align: center;
+}
+.calculator-input:not(:placeholder-shown) {
+  padding-right: 20px;
+}
+@media (min-width: 1024px) {
+  .calculator-input {
+    width: 7.3125rem;
+  }
+  .calculator-input:valid:hover {
+    background: #f3f9fa;
+    border: 2px solid #26c2ae;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.input-error {
+  border: 2px solid #e17052;
+}
+
+.input-valid {
+  border: 2px solid #26c2ae;
+}/*# sourceMappingURL=style.css.map */
